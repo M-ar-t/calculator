@@ -1,0 +1,87 @@
+$colorNumber: #323431;
+$colorTopPanel: #a6a9a6;
+$colorRightPanel: #fe9603;
+$colorBtnHover: #767474;
+$columnWidth:65px;
+
+@font-face {
+  font-display: swap;
+  font-family: "San Francisco";
+  font-style: normal;
+  font-weight: 300;
+  src: url(./fonts/SFUIDisplay-Thin.woff);
+}
+@font-face {
+  font-display: swap;
+  font-family: "San Francisco";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/SFUIDisplay-Regular.woff);
+}
+
+.main {
+  width: 350px;
+  height: 600px;
+  background-color: black;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-family: "San Francisco";
+  font-weight: 400;
+  font-size: 60px;
+}
+.main_window {
+  color: white;
+  padding: 100px 30px 10px 30px;
+  font-family: "San Francisco";
+  font-weight: 300;
+  text-align: end;
+}
+.main_btns {
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+.main_item-btn:nth-child(17) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 1.8*$columnWidth;
+justify-content: left;
+padding-left: 25px;
+}
+.main_item-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: $colorNumber;
+  text-align: center;
+  margin: 7px;
+  width: $columnWidth;
+  height: 65px;
+  border-radius: 50px;
+}
+@for $i from 1 through 19 {
+  @if ($i % 4==0) {
+    .main_item-btn:nth-child(#{$i}) {
+      background-color: $colorRightPanel;
+      color: white;
+    }
+  }
+  @if (($i==1) or($i==2) or($i==3)) {
+    .main_item-btn:nth-child(#{$i}) {
+      background-color: $colorTopPanel;
+      color: black;
+    }
+  }
+}
+
+.main_item-btn:hover {
+  color: $colorBtnHover;
+}
+img {
+  width: 30px;
+  height: 30px;
+}

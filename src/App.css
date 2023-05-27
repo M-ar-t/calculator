@@ -1,0 +1,106 @@
+@font-face {
+  font-display: swap;
+  font-family: "San Francisco";
+  font-style: normal;
+  font-weight: 300;
+  src: url(./fonts/SFUIDisplay-Thin.woff);
+}
+@font-face {
+  font-display: swap;
+  font-family: "San Francisco";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/SFUIDisplay-Regular.woff);
+}
+.main {
+  width: 350px;
+  height: 600px;
+  background-color: black;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-family: "San Francisco";
+  font-weight: 400;
+  font-size: 60px;
+}
+
+.main_window {
+  color: white;
+  padding: 100px 30px 10px 30px;
+  font-family: "San Francisco";
+  font-weight: 300;
+  text-align: end;
+}
+
+.main_btns {
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+
+.main_item-btn:nth-child(17) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 117px;
+  justify-content: left;
+  padding-left: 25px;
+}
+
+.main_item-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #323431;
+  text-align: center;
+  margin: 7px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+}
+
+.main_item-btn:nth-child(1) {
+  background-color: #a6a9a6;
+  color: black;
+}
+
+.main_item-btn:nth-child(2) {
+  background-color: #a6a9a6;
+  color: black;
+}
+
+.main_item-btn:nth-child(3) {
+  background-color: #a6a9a6;
+  color: black;
+}
+
+.main_item-btn:nth-child(4) {
+  background-color: #fe9603;
+  color: white;
+}
+
+.main_item-btn:nth-child(8) {
+  background-color: #fe9603;
+  color: white;
+}
+
+.main_item-btn:nth-child(12) {
+  background-color: #fe9603;
+  color: white;
+}
+
+.main_item-btn:nth-child(16) {
+  background-color: #fe9603;
+  color: white;
+}
+
+.main_item-btn:hover {
+  color: #767474;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}/*# sourceMappingURL=App.css.map */
