@@ -85,9 +85,6 @@ function App() {
   }
 
   function persent(){
-    console.log(firstOperand);
-    console.log(curOperation);
-    console.log(currentVal);
     if (firstOperand){
       setCurrentVal(String(firstOperand*String(currentVal).replace(',','.')/100).replace('.',','))
     }else{
