@@ -12,12 +12,16 @@ function App() {
   const [AC, setAC] = useState('AC')
   const[curOperation, setCurOperation] =useState()
   const[newWindow, setnewWindow] =useState(false)
-  const [firstOperand, setFirstOperand] = useState('')
+  const [firstOperand, setFirstOperand] = useState()
+  const [isResult, setIsResult] = useState(false)
 
   function addNum(e){
     setAC('C')
-    
-    if (currentVal === 0 || newWindow){
+    if (isResult===true){
+      setCurrentVal(e.currentTarget.textContent)
+      setIsResult(false)
+    }
+    else if (currentVal === 0 || newWindow){
       setnewWindow(false)
       setCurrentVal(e.currentTarget.textContent)
     }else{
@@ -30,10 +34,12 @@ function App() {
   function clearWindow(e){
     setAC('AC')
     setCurrentVal(0)
+    setFirstOperand()
     setCurOperation()
   }
 
   function processingOperation(val){
+    setIsResult(false)
     setAC('C')
     setFirstOperand(currentVal)
     setCurOperation(val)
@@ -41,6 +47,7 @@ function App() {
   }
 
   function result(){
+    setIsResult(true)
     let secondOperandResult = currentVal
     let firstOperandResult = firstOperand
     let currentResult
@@ -57,28 +64,34 @@ function App() {
         currentResult = firstOperandResult/secondOperandResult
       }
     }
-    if (curOperation ==="multiply"){
+    else if (curOperation ==="multiply"){
       currentResult = firstOperandResult*secondOperandResult
     }
-    if (curOperation ==="minus"){
+    else if (curOperation ==="minus"){
       currentResult = firstOperandResult-secondOperandResult
     }
-    if (curOperation ==="plus"){
+    else if (curOperation ==="plus"){
       currentResult = firstOperandResult+secondOperandResult
     }
-    if (curOperation ==="persent"){
+    else if (curOperation ==="persent"){
       currentResult = firstOperandResult+secondOperandResult
     }
-
+    else{
+      return
+    }
+    setCurOperation()
+    setFirstOperand()
     setCurrentVal(String(Math.round(currentResult*1000000)/1000000).replace('.',','))
   }
 
   function persent(){
     console.log(firstOperand);
+    console.log(curOperation);
+    console.log(currentVal);
     if (firstOperand){
-      setCurrentVal(String(firstOperand*currentVal/100).replace('.',','))
+      setCurrentVal(String(firstOperand*String(currentVal).replace(',','.')/100).replace('.',','))
     }else{
-      setCurrentVal(String(currentVal/100).replace('.',','))
+      setCurrentVal(String(String(currentVal).replace(',','.')/100).replace('.',','))
     }
   }
 
@@ -88,7 +101,9 @@ function App() {
         <div className='main_window'>{currentVal}</div>
         <div className='main_btns'>
           <div className='main_item-btn'onClick={(e)=>clearWindow(e)}>{AC}</div>
-          <div className='main_item-btn' onClick={()=>setCurrentVal(currentVal*(-1))}><img src={imgSignBold} alt=''/></div>
+          <div className='main_item-btn' onClick={()=>
+            setCurrentVal(String(Number(String(currentVal).replace(',','.'))*(-1)).replace('.',','))}>
+            <img src={imgSignBold} alt=''/></div>
           <div className='main_item-btn' onClick={()=>persent()}>%</div>
           <div className='main_item-btn' onClick={()=>processingOperation('division')}><img src={imgDivision} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>7</div>
@@ -105,9 +120,7 @@ function App() {
           <div className='main_item-btn'  onClick={()=>processingOperation('plus')}><img src={imgPlus} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>0</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>,</div>
-          <div className='main_item-btn' onClick={()=>{
-            result()
-          }}>=</div>
+          <div className='main_item-btn' onClick={()=>{result()}}>=</div>
         </div>
       </main>
     </div>
