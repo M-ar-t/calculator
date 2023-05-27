@@ -1,7 +1,10 @@
 $colorNumber: #323431;
 $colorTopPanel: #a6a9a6;
 $colorRightPanel: #fe9603;
-$colorBtnHover: #767474;
+
+$colorNumberHover: #767474;
+$colorTopPanelHover: #d6d7d6;
+$colorRightPanelHover: #f9b455;
 $columnWidth:65px;
 
 @font-face {
@@ -30,8 +33,9 @@ $columnWidth:65px;
   font-size: 60px;
 }
 .main_window {
+  height: 85px;
   color: white;
-  padding: 100px 30px 10px 30px;
+  padding: 100px 30px 0px 30px;
   font-family: "San Francisco";
   font-weight: 300;
   text-align: end;
@@ -63,11 +67,19 @@ padding-left: 25px;
   height: 65px;
   border-radius: 50px;
 }
+
+.main_item-btn:hover {
+  background-color: $colorNumberHover;
+  cursor: pointer;
+}
 @for $i from 1 through 19 {
   @if ($i % 4==0) {
     .main_item-btn:nth-child(#{$i}) {
       background-color: $colorRightPanel;
       color: white;
+    }
+    .main_item-btn:nth-child(#{$i}):hover {
+      background-color: $colorRightPanelHover;
     }
   }
   @if (($i==1) or($i==2) or($i==3)) {
@@ -75,12 +87,12 @@ padding-left: 25px;
       background-color: $colorTopPanel;
       color: black;
     }
+    .main_item-btn:nth-child(#{$i}):hover {
+      background-color: $colorTopPanelHover;
+    }
   }
 }
 
-.main_item-btn:hover {
-  color: $colorBtnHover;
-}
 img {
   width: 30px;
   height: 30px;
