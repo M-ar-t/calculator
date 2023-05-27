@@ -44,14 +44,42 @@ function App() {
     let secondOperandResult = currentVal
     let firstOperandResult = firstOperand
     let currentResult
-    
+
     firstOperandResult = Number(String(firstOperand).replace(',','.'))
     secondOperandResult = Number(String(secondOperandResult).replace(',','.'))
     if (curOperation ==="division"){
-      currentResult = firstOperandResult/secondOperandResult
+
+      if (secondOperandResult===0){
+        setCurrentVal("Ошибка")
+        return
+        
+      }else{
+        currentResult = firstOperandResult/secondOperandResult
+      }
+    }
+    if (curOperation ==="multiply"){
+      currentResult = firstOperandResult*secondOperandResult
+    }
+    if (curOperation ==="minus"){
+      currentResult = firstOperandResult-secondOperandResult
+    }
+    if (curOperation ==="plus"){
+      currentResult = firstOperandResult+secondOperandResult
+    }
+    if (curOperation ==="persent"){
+      currentResult = firstOperandResult+secondOperandResult
     }
 
     setCurrentVal(String(Math.round(currentResult*1000000)/1000000).replace('.',','))
+  }
+
+  function persent(){
+    console.log(firstOperand);
+    if (firstOperand){
+      setCurrentVal(String(firstOperand*currentVal/100).replace('.',','))
+    }else{
+      setCurrentVal(String(currentVal/100).replace('.',','))
+    }
   }
 
   return (
@@ -60,21 +88,21 @@ function App() {
         <div className='main_window'>{currentVal}</div>
         <div className='main_btns'>
           <div className='main_item-btn'onClick={(e)=>clearWindow(e)}>{AC}</div>
-          <div className='main_item-btn'><img src={imgSignBold} alt=''/></div>
-          <div className='main_item-btn' onClick={()=>processingOperation('persent')}>%</div>
+          <div className='main_item-btn' onClick={()=>setCurrentVal(currentVal*(-1))}><img src={imgSignBold} alt=''/></div>
+          <div className='main_item-btn' onClick={()=>persent()}>%</div>
           <div className='main_item-btn' onClick={()=>processingOperation('division')}><img src={imgDivision} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>7</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>8</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>9</div>
-          <div className='main_item-btn'><img src={imgMultiply} alt=''/></div>
+          <div className='main_item-btn' onClick={()=>processingOperation('multiply')}><img src={imgMultiply} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>4</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>5</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>6</div>
-          <div className='main_item-btn'><img src={imgMinus} alt=''/></div>
+          <div className='main_item-btn'  onClick={()=>processingOperation('minus')}><img src={imgMinus} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>1</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>2</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>3</div>
-          <div className='main_item-btn'><img src={imgPlus} alt=''/></div>
+          <div className='main_item-btn'  onClick={()=>processingOperation('plus')}><img src={imgPlus} alt=''/></div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>0</div>
           <div className='main_item-btn' onClick={(e)=>addNum(e)}>,</div>
           <div className='main_item-btn' onClick={()=>{
