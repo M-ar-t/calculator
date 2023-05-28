@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3527ab4d.css",
+    "main.js": "/static/js/main.15c482c6.js",
+    "static/media/SFUIDisplay-Thin.woff": "/static/media/SFUIDisplay-Thin.f6a96ccdeb71e593f093.woff",
+    "static/media/SFUIDisplay-Regular.woff": "/static/media/SFUIDisplay-Regular.1b6ee1f6f9e80f37ff4e.woff",
+    "index.html": "/index.html",
+    "main.3527ab4d.css.map": "/static/css/main.3527ab4d.css.map",
+    "main.15c482c6.js.map": "/static/js/main.15c482c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3527ab4d.css",
+    "static/js/main.15c482c6.js"
+  ]
+}
